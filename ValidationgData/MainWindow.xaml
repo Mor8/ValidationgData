@@ -6,6 +6,17 @@
         xmlns:local="clr-namespace:ValidationgData"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ControlTemplate x:Key="errorTemplate">
+            <Border BorderBrush="Red" BorderThickness="2">
+                <Grid>
+                    <AdornedElementPlaceholder x:Name="_el" />
+                    <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red" 
+                               HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
