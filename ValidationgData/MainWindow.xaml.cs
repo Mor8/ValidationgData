@@ -23,6 +23,8 @@ namespace ValidationgData
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new Person { Name = "Bart", Age = 10 };
         }
     }
 }
