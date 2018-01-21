@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ValidationgData
 {
-    class Person : INotifyPropertyChanged
+    class Person : INotifyPropertyChanged, IDataErrorInfo
     {
         protected virtual void OnPropertyChanged(string propName)
         {
@@ -41,6 +41,33 @@ namespace ValidationgData
                 }
                 _age = value;
                 OnPropertyChanged(nameof(Age));
+            }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch(columnName)
+                {
+                    case nameof(Name):
+                        if (string.IsNullOrWhiteSpace(Name))
+                            return "Name cannot be empty";
+                        break;
+                    case nameof(Age):
+                        if (Age < 1)
+                            return "Age must be a positive integer";
+                        break;
+                }
+                return null;
             }
         }
 
