@@ -16,7 +16,15 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Name:" Margin="6"/>
-        <TextBox Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="6"/>
+        <TextBox Grid.Column="1" Margin="6">
+            <TextBox.Text>
+                <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:MinCharsRule MinimumChars="3"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBlock Text="Age:" Grid.Row="1" Margin="6"/>
         <TextBox Text="{Binding Age, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Margin="6"/>
     </Grid>
