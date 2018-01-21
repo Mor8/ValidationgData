@@ -16,6 +16,11 @@
                 </Grid>
             </Border>
         </ControlTemplate>
+        <ControlTemplate x:Key="errorTemplate2">
+            <Border BorderBrush="Red" BorderThickness="2" Background="#1FFF0000" SnapsToDevicePixels="True">
+                <AdornedElementPlaceholder/>
+            </Border>
+        </ControlTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -27,7 +32,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Name:" Margin="6"/>
-        <TextBox Grid.Column="1" Margin="6" Validation.ErrorTemplate="{StaticResource errorTemplate}">
+        <TextBox Grid.Column="1" Margin="6" Validation.ErrorTemplate="{StaticResource errorTemplate2}">
             <TextBox.Text>
                 <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
