@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
+        <ToolTip x:Key="ValidationErrorsToolTip">
+            <ItemsControl ItemsSource="{Binding}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ErrorContent}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ToolTip>
         <ControlTemplate x:Key="errorTemplate">
             <Border BorderBrush="Red" BorderThickness="2">
                 <Grid>
@@ -21,6 +30,12 @@
                 <AdornedElementPlaceholder/>
             </Border>
         </ControlTemplate>
+        <ControlTemplate x:Key="WarningErrorTemplate">
+            <StackPanel Orientation="Horizontal" ToolTip="{StaticResource ValidationErrorsToolTip}">
+                <AdornedElementPlaceholder Margin="0,0,2,0"/>
+                <Image Source="images/Warning_16.png"/>
+            </StackPanel>
+        </ControlTemplate>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -29,12 +44,12 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <TextBlock Text="Name:" Margin="6"/>
-        <TextBox Grid.Column="1" Margin="6" Validation.ErrorTemplate="{StaticResource errorTemplate2}">
+        <TextBox Grid.Column="1" Margin="6,6,30,6" Validation.ErrorTemplate="{StaticResource WarningErrorTemplate}">
             <TextBox.Text>
-                <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Name" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Delay="250">
                     <Binding.ValidationRules>
                         <local:MinCharsRule MinimumChars="3"/>
                     </Binding.ValidationRules>
