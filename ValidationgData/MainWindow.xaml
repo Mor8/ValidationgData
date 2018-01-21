@@ -16,8 +16,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Name:" Margin="6"/>
-        <TextBox Text="{Binding Name, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="6"/>
+        <TextBox Text="{Binding Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="6"/>
         <TextBlock Text="Age:" Grid.Row="1" Margin="6"/>
-        <TextBox Text="{Binding Age, ValidatesOnExceptions=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Margin="6"/>
+        <TextBox Text="{Binding Age, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Margin="6"/>
     </Grid>
 </Window>
