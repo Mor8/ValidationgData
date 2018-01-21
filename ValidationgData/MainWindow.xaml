@@ -31,9 +31,11 @@
             </Border>
         </ControlTemplate>
         <ControlTemplate x:Key="WarningErrorTemplate">
-            <StackPanel Orientation="Horizontal" ToolTip="{StaticResource ValidationErrorsToolTip}">
-                <AdornedElementPlaceholder Margin="0,0,2,0"/>
-                <Image Source="images/Warning_16.png"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Border BorderBrush="Red" BorderThickness="2" Background="#1FFF0000" SnapsToDevicePixels="True">
+                    <AdornedElementPlaceholder/>
+                </Border>
+                <Image Source="images/Warning_16.png" Margin="2,0,0,0" ToolTip="{StaticResource ValidationErrorsToolTip}"/>
             </StackPanel>
         </ControlTemplate>
     </Window.Resources>
